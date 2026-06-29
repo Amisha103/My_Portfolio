@@ -20,21 +20,21 @@ app.mount(
 )
 
 
-
 @app.get("/")
 def home(request: Request):
 
     return templates.TemplateResponse(
-        "index.html",
-        {
-            "request":request
+        request=request,
+        name="index.html",
+        context={
+            "request": request
         }
     )
 
 
 @app.get("/api")
-def api_test():
+def test_api():
 
     return {
-        "message":"Portfolio API running"
+        "message": "Portfolio backend running"
     }
