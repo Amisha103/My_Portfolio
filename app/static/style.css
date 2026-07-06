@@ -1,68 +1,289 @@
-*{
+/* ==========================================================
+   AMISHA PORTFOLIO
+   PART 1 - RESET • THEME • BACKGROUND • NAVBAR • HERO
+========================================================== */
 
-box-sizing:border-box;
+/* ================= GOOGLE FONT ================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    color:#f8fafc;
+    background:#050816;
+    line-height:1.7;
+}
+
+/* ================= COLORS ================= */
+
+:root{
+
+    --bg:#050816;
+    --bg2:#0d1329;
+    --card:rgba(255,255,255,.06);
+
+    --primary:#7c3aed;
+    --secondary:#06b6d4;
+    --pink:#ec4899;
+
+    --white:#ffffff;
+    --text:#e2e8f0;
+    --muted:#94a3b8;
+
+    --border:rgba(255,255,255,.08);
+
+    --shadow:
+    0 15px 40px rgba(0,0,0,.35);
 
 }
 
+/* ================= BODY BACKGROUND ================= */
 
 body{
 
-margin:0;
+background:
 
-font-family:
-'Segoe UI',
-sans-serif;
+radial-gradient(circle at 15% 20%,rgba(124,58,237,.28),transparent 30%),
 
-background:#020617;
+radial-gradient(circle at 85% 10%,rgba(6,182,212,.20),transparent 25%),
 
-color:white;
+radial-gradient(circle at 60% 80%,rgba(236,72,153,.16),transparent 25%),
+
+linear-gradient(135deg,#050816,#0b1023,#050816);
+
+background-attachment:fixed;
 
 }
 
+/* ================= ANIMATED BLOBS ================= */
 
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:500px;
+height:500px;
+
+top:-180px;
+left:-180px;
+
+border-radius:50%;
+
+background:radial-gradient(circle,
+rgba(124,58,237,.45),
+transparent 70%);
+
+filter:blur(70px);
+
+animation:blob1 14s infinite alternate ease-in-out;
+
+z-index:-3;
+
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+width:550px;
+height:550px;
+
+right:-200px;
+bottom:-200px;
+
+border-radius:50%;
+
+background:radial-gradient(circle,
+rgba(6,182,212,.35),
+transparent 70%);
+
+filter:blur(90px);
+
+animation:blob2 18s infinite alternate ease-in-out;
+
+z-index:-3;
+
+}
+
+/* ================= PARTICLE CANVAS ================= */
+
+#bg{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+z-index:-2;
+
+pointer-events:none;
+
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+
+position:relative;
+
+z-index:5;
+
+}
+
+/* ================= NAVBAR ================= */
 
 nav{
 
+position:fixed;
+
+top:20px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:min(1150px,92%);
+
+height:72px;
+
 display:flex;
+
+align-items:center;
 
 justify-content:space-between;
 
-padding:20px 8%;
+padding:0 35px;
 
-position:sticky;
+background:rgba(255,255,255,.07);
 
-top:0;
+backdrop-filter:blur(20px);
 
-background:#020617;
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:22px;
+
+box-shadow:var(--shadow);
+
+z-index:999;
+
+transition:.35s;
 
 }
 
+nav:hover{
 
+background:rgba(255,255,255,.09);
+
+}
+
+/* ================= LOGO ================= */
+
+nav h2{
+
+font-size:30px;
+
+font-weight:700;
+
+background:linear-gradient(90deg,
+var(--primary),
+var(--secondary));
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+cursor:pointer;
+
+}
+
+/* ================= LINKS ================= */
+
+nav div{
+
+display:flex;
+
+align-items:center;
+
+gap:28px;
+
+}
 
 nav a{
 
-color:white;
+position:relative;
 
 text-decoration:none;
 
-margin:15px;
+color:var(--text);
+
+font-size:15px;
+
+font-weight:500;
+
+transition:.35s;
 
 }
 
+nav a:hover{
 
-
-
-section{
-
-padding:80px 10%;
+color:white;
 
 }
 
+nav a::after{
 
+content:"";
+
+position:absolute;
+
+bottom:-6px;
+
+left:0;
+
+width:0;
+
+height:2px;
+
+background:linear-gradient(
+90deg,
+var(--primary),
+var(--secondary));
+
+transition:.35s;
+
+}
+
+nav a:hover::after{
+
+width:100%;
+
+}
+
+/* ================= HERO ================= */
 
 .hero{
 
-height:90vh;
+min-height:100vh;
 
 display:flex;
 
@@ -74,125 +295,1174 @@ align-items:center;
 
 text-align:center;
 
+padding:130px 25px 60px;
+
+max-width:950px;
+
+margin:auto;
+
 }
 
-
+/* ================= HERO TITLE ================= */
 
 .hero h1{
 
-font-size:60px;
+font-size:68px;
+
+font-weight:800;
+
+line-height:1.1;
+
+margin-bottom:18px;
+
+background:
+
+linear-gradient(
+90deg,
+#ffffff,
+#d8b4fe,
+#67e8f9);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+animation:fadeUp .8s ease;
 
 }
 
+/* ================= HERO SUBTITLE ================= */
 
+.hero h2{
+
+font-size:24px;
+
+font-weight:500;
+
+color:#67e8f9;
+
+margin-bottom:25px;
+
+animation:fadeUp 1s ease;
+
+}
+
+/* ================= HERO TEXT ================= */
 
 .hero p{
 
-max-width:700px;
+max-width:760px;
 
-font-size:20px;
+font-size:18px;
 
-line-height:1.7;
+color:var(--muted);
+
+margin-bottom:40px;
+
+animation:fadeUp 1.2s ease;
 
 }
 
+/* ================= HERO BUTTON AREA ================= */
 
+.hero div{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:18px;
+
+}
+
+/* ================= BUTTON ================= */
 
 .btn{
 
+padding:15px 34px;
 
-padding:15px 30px;
+border-radius:14px;
 
-background:white;
+text-decoration:none;
 
-color:black;
+font-weight:600;
 
-border-radius:30px;
+transition:.35s;
 
-display:inline-block;
+background:
 
-margin:20px;
+linear-gradient(
+135deg,
+var(--primary),
+var(--secondary));
 
-cursor:pointer;
+color:white;
+
+box-shadow:
+
+0 15px 40px rgba(124,58,237,.35);
 
 }
 
+.btn:hover{
 
+transform:
 
-.secondary{
+translateY(-6px)
+scale(1.04);
 
-background:#334155;
+box-shadow:
+
+0 25px 50px rgba(6,182,212,.30);
+
+}
+
+/* ================= SECOND BUTTON ================= */
+
+.btn.secondary{
+
+background:transparent;
+
+border:1px solid rgba(255,255,255,.15);
 
 color:white;
 
 }
 
+.btn.secondary:hover{
 
+background:rgba(255,255,255,.08);
+
+}
+
+/* ================= SECTION ================= */
+
+section{
+
+padding:120px 8%;
+
+max-width:1200px;
+
+margin:auto;
+
+}
+
+/* ================= TITLES ================= */
+
+section h1{
+
+font-size:42px;
+
+margin-bottom:40px;
+
+text-align:center;
+
+background:
+
+linear-gradient(
+90deg,
+var(--primary),
+var(--secondary));
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+/* ==========================================================
+   AMISHA PORTFOLIO
+   PART 1 - RESET • THEME • BACKGROUND • NAVBAR • HERO
+========================================================== */
+
+/* ================= GOOGLE FONT ================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    color:#f8fafc;
+    background:#050816;
+    line-height:1.7;
+}
+
+/* ================= COLORS ================= */
+
+:root{
+
+    --bg:#050816;
+    --bg2:#0d1329;
+    --card:rgba(255,255,255,.06);
+
+    --primary:#7c3aed;
+    --secondary:#06b6d4;
+    --pink:#ec4899;
+
+    --white:#ffffff;
+    --text:#e2e8f0;
+    --muted:#94a3b8;
+
+    --border:rgba(255,255,255,.08);
+
+    --shadow:
+    0 15px 40px rgba(0,0,0,.35);
+
+}
+
+/* ================= BODY BACKGROUND ================= */
+
+body{
+
+background:
+
+radial-gradient(circle at 15% 20%,rgba(124,58,237,.28),transparent 30%),
+
+radial-gradient(circle at 85% 10%,rgba(6,182,212,.20),transparent 25%),
+
+radial-gradient(circle at 60% 80%,rgba(236,72,153,.16),transparent 25%),
+
+linear-gradient(135deg,#050816,#0b1023,#050816);
+
+background-attachment:fixed;
+
+}
+
+/* ================= ANIMATED BLOBS ================= */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:500px;
+height:500px;
+
+top:-180px;
+left:-180px;
+
+border-radius:50%;
+
+background:radial-gradient(circle,
+rgba(124,58,237,.45),
+transparent 70%);
+
+filter:blur(70px);
+
+animation:blob1 14s infinite alternate ease-in-out;
+
+z-index:-3;
+
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+width:550px;
+height:550px;
+
+right:-200px;
+bottom:-200px;
+
+border-radius:50%;
+
+background:radial-gradient(circle,
+rgba(6,182,212,.35),
+transparent 70%);
+
+filter:blur(90px);
+
+animation:blob2 18s infinite alternate ease-in-out;
+
+z-index:-3;
+
+}
+
+/* ================= PARTICLE CANVAS ================= */
+
+#bg{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+z-index:-2;
+
+pointer-events:none;
+
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+
+position:relative;
+
+z-index:5;
+
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+
+position:fixed;
+
+top:20px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:min(1150px,92%);
+
+height:72px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 35px;
+
+background:rgba(255,255,255,.07);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:22px;
+
+box-shadow:var(--shadow);
+
+z-index:999;
+
+transition:.35s;
+
+}
+
+nav:hover{
+
+background:rgba(255,255,255,.09);
+
+}
+
+/* ================= LOGO ================= */
+
+nav h2{
+
+font-size:30px;
+
+font-weight:700;
+
+background:linear-gradient(90deg,
+var(--primary),
+var(--secondary));
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+cursor:pointer;
+
+}
+
+/* ================= LINKS ================= */
+
+nav div{
+
+display:flex;
+
+align-items:center;
+
+gap:28px;
+
+}
+
+nav a{
+
+position:relative;
+
+text-decoration:none;
+
+color:var(--text);
+
+font-size:15px;
+
+font-weight:500;
+
+transition:.35s;
+
+}
+
+nav a:hover{
+
+color:white;
+
+}
+
+nav a::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-6px;
+
+left:0;
+
+width:0;
+
+height:2px;
+
+background:linear-gradient(
+90deg,
+var(--primary),
+var(--secondary));
+
+transition:.35s;
+
+}
+
+nav a:hover::after{
+
+width:100%;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:130px 25px 60px;
+
+max-width:950px;
+
+margin:auto;
+
+}
+
+/* ================= HERO TITLE ================= */
+
+.hero h1{
+
+font-size:68px;
+
+font-weight:800;
+
+line-height:1.1;
+
+margin-bottom:18px;
+
+background:
+
+linear-gradient(
+90deg,
+#ffffff,
+#d8b4fe,
+#67e8f9);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+animation:fadeUp .8s ease;
+
+}
+
+/* ================= HERO SUBTITLE ================= */
+
+.hero h2{
+
+font-size:24px;
+
+font-weight:500;
+
+color:#67e8f9;
+
+margin-bottom:25px;
+
+animation:fadeUp 1s ease;
+
+}
+
+/* ================= HERO TEXT ================= */
+
+.hero p{
+
+max-width:760px;
+
+font-size:18px;
+
+color:var(--muted);
+
+margin-bottom:40px;
+
+animation:fadeUp 1.2s ease;
+
+}
+
+/* ================= HERO BUTTON AREA ================= */
+
+.hero div{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:18px;
+
+}
+
+/* ================= BUTTON ================= */
+
+.btn{
+
+padding:15px 34px;
+
+border-radius:14px;
+
+text-decoration:none;
+
+font-weight:600;
+
+transition:.35s;
+
+background:
+
+linear-gradient(
+135deg,
+var(--primary),
+var(--secondary));
+
+color:white;
+
+box-shadow:
+
+0 15px 40px rgba(124,58,237,.35);
+
+}
+
+.btn:hover{
+
+transform:
+
+translateY(-6px)
+scale(1.04);
+
+box-shadow:
+
+0 25px 50px rgba(6,182,212,.30);
+
+}
+
+/* ================= SECOND BUTTON ================= */
+
+.btn.secondary{
+
+background:transparent;
+
+border:1px solid rgba(255,255,255,.15);
+
+color:white;
+
+}
+
+.btn.secondary:hover{
+
+background:rgba(255,255,255,.08);
+
+}
+
+/* ================= SECTION ================= */
+
+section{
+
+padding:120px 8%;
+
+max-width:1200px;
+
+margin:auto;
+
+}
+
+/* ================= TITLES ================= */
+
+section h1{
+
+font-size:42px;
+
+margin-bottom:40px;
+
+text-align:center;
+
+background:
+
+linear-gradient(
+90deg,
+var(--primary),
+var(--secondary));
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+/* ==========================================================
+   PART 2 - CARDS • ABOUT • SKILLS • PROJECTS
+==========================================================*/
+
+
+/* ================= GRID ================= */
 
 .grid{
 
 display:grid;
 
-grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 
-gap:25px;
+gap:30px;
+
+margin-top:50px;
 
 }
 
 
+/* ================= GLASS CARD ================= */
 
 .card{
 
-background:#111827;
+position:relative;
 
-padding:25px;
+padding:30px;
 
-border-radius:15px;
+background:rgba(255,255,255,.05);
 
-box-shadow:0 10px 30px #000;
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:22px;
+
+backdrop-filter:blur(18px);
+
+overflow:hidden;
+
+transition:.45s;
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.25);
 
 }
 
 
+/* glowing border */
 
-input,
-textarea{
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-100%;
 
 width:100%;
 
-padding:15px;
+height:3px;
 
-margin:10px 0;
+background:linear-gradient(
 
-background:#111827;
+90deg,
 
-border:none;
+transparent,
 
-color:white;
+#7c3aed,
+
+#06b6d4,
+
+transparent
+
+);
+
+transition:.8s;
 
 }
 
 
+.card:hover::before{
 
-button{
+left:100%;
 
-padding:15px 30px;
+}
 
-border:none;
 
-border-radius:20px;
+/* glow */
+
+.card::after{
+
+content:"";
+
+position:absolute;
+
+width:220px;
+
+height:220px;
+
+border-radius:50%;
+
+background:rgba(124,58,237,.12);
+
+filter:blur(70px);
+
+right:-120px;
+
+top:-120px;
+
+opacity:0;
+
+transition:.5s;
+
+}
+
+
+.card:hover::after{
+
+opacity:1;
+
+}
+
+
+/* lift */
+
+.card:hover{
+
+transform:
+
+translateY(-14px)
+
+rotateX(4deg)
+
+scale(1.02);
+
+border-color:rgba(124,58,237,.35);
+
+box-shadow:
+
+0 25px 60px rgba(124,58,237,.25);
+
+}
+
+
+/* ================= CARD HEADINGS ================= */
+
+.card h3{
+
+font-size:24px;
+
+margin-bottom:18px;
+
+color:white;
+
+transition:.3s;
+
+}
+
+
+.card:hover h3{
+
+color:#67e8f9;
+
+}
+
+
+/* ================= CARD TEXT ================= */
+
+.card p{
+
+color:#b6c2d1;
+
+line-height:1.8;
+
+font-size:15px;
+
+}
+
+
+/* ================= LIST ================= */
+
+.card ul{
+
+padding-left:18px;
+
+margin-top:15px;
+
+}
+
+
+.card li{
+
+margin-bottom:10px;
+
+color:#cbd5e1;
+
+}
+
+
+/* ================= ABOUT ================= */
+
+#about{
+
+position:relative;
+
+}
+
+
+#about>p{
+
+font-size:18px;
+
+line-height:2;
+
+color:#b8c4d8;
+
+max-width:900px;
+
+margin:auto;
+
+text-align:center;
+
+margin-bottom:50px;
+
+}
+
+
+/* ================= ABOUT CARDS ================= */
+
+#about .card{
+
+min-height:230px;
+
+}
+
+
+/* ================= SKILLS ================= */
+
+#skills{
+
+position:relative;
+
+}
+
+
+/* ================= SKILL CARD ================= */
+
+#skills .card{
+
+text-align:center;
 
 cursor:pointer;
 
 }
 
 
+#skills .card h3{
 
-footer{
+font-size:22px;
+
+margin-bottom:20px;
+
+}
+
+
+#skills .card p{
+
+font-size:16px;
+
+line-height:2;
+
+}
+
+
+/* ================= PROJECTS ================= */
+
+#projects{
+
+position:relative;
+
+}
+
+
+/* ================= PROJECT CARD ================= */
+
+#projects .card{
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+min-height:360px;
+
+}
+
+
+/* ================= PROJECT TITLE ================= */
+
+#projects h3{
+
+font-size:26px;
+
+margin-bottom:18px;
+
+}
+
+
+/* ================= TECH STACK ================= */
+
+#projects strong{
+
+display:block;
+
+margin-top:20px;
+
+margin-bottom:12px;
+
+color:#67e8f9;
+
+font-size:15px;
+
+letter-spacing:1px;
+
+}
+
+
+/* ================= GITHUB BUTTON ================= */
+
+#projects a{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+margin-top:25px;
+
+padding:12px 18px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+font-weight:600;
+
+background:linear-gradient(
+
+135deg,
+
+#7c3aed,
+
+#06b6d4
+
+);
+
+color:white;
+
+transition:.35s;
+
+width:160px;
+
+}
+
+
+#projects a:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+
+0 15px 30px rgba(124,58,237,.35);
+
+}
+
+
+/* ================= CERTIFICATES ================= */
+
+#certifications{
+
+position:relative;
+
+}
+
+
+#certifications .card{
 
 text-align:center;
 
-padding:30px;
+}
+
+
+#certifications h3{
+
+margin-bottom:15px;
+
+}
+
+
+#certifications p{
+
+margin-bottom:25px;
+
+}
+
+
+/* ================= CONTACT ================= */
+
+#contact{
+
+text-align:center;
+
+}
+
+
+#contact p{
+
+margin:18px 0;
+
+font-size:18px;
+
+}
+
+
+#contact a{
+
+color:#67e8f9;
+
+text-decoration:none;
+
+transition:.3s;
+
+font-weight:500;
+
+}
+
+
+#contact a:hover{
+
+color:white;
+
+text-shadow:
+
+0 0 15px #06b6d4;
+
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+
+margin-top:80px;
+
+padding:35px;
+
+text-align:center;
+
+font-size:15px;
+
+color:#94a3b8;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+background:rgba(255,255,255,.03);
+
+backdrop-filter:blur(10px);
+
+}
+
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+
+width:9px;
+
+}
+
+
+::-webkit-scrollbar-track{
+
+background:#090d1f;
+
+}
+
+
+::-webkit-scrollbar-thumb{
+
+background:linear-gradient(
+
+180deg,
+
+#7c3aed,
+
+#06b6d4
+
+);
+
+border-radius:20px;
+
+}
+
+
+/* ================= SELECTION ================= */
+
+::selection{
+
+background:#7c3aed;
+
+color:white;
 
 }
