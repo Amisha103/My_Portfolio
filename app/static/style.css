@@ -1466,3 +1466,40 @@ background:#7c3aed;
 color:white;
 
 }
+.education-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.edu-card{
+    text-align:center;
+    padding:30px 25px;
+}
+
+.edu-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.edu-card h3{
+    margin-bottom:10px;
+}
+
+.edu-card h4{
+    color:#8b5cf6;
+    margin:12px 0;
+    font-size:1rem;
+    font-weight:600;
+}
+
+.edu-card span{
+    display:inline-block;
+    margin-top:15px;
+    padding:8px 18px;
+    border-radius:20px;
+    background:#8b5cf6;
+    color:white;
+    font-weight:600;
+}
